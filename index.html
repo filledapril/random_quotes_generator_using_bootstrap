@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Inspirational quotes by awesome author!</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script>
+//create some datas here
+      const quotes = [
+      {
+        quote: "I was never afraid of failure; for I would sooner fail than not be among the greatest.",
+        author: "JOHN KEATS"
+      },{
+        quote: "There is nothing noble in being superior to your fellow man; true nobility is being superior to your former self.",
+        author: "ERNEST HEMINGWAY"
+      },{
+        quote: "It is what you read when you don’t have to that determines what you will be when you can’t help it.",
+        author: "OSCAR WILDE"
+      },{
+        quote: "Tomorrow we will run faster, stretch out our arms farther…",
+        author: "F. SCOTT FITZGERALD"
+      },{
+        quote: "If you’re always trying to be normal you will never know how amazing you can be.",
+        author: "MAYA ANGELOU"
+      },{
+        quote: "If you can feel that staying human is worthwhile, even when it can’t have any result whatever, you’ve beaten them.",
+        author: "GEORGE ORWELL"
+      },{
+        quote: "Integrity is doing the right thing, even when no one is watching.",
+        author: "C.S. LEWIS"
+      },{
+        quote: "All we have to decide is what to do with the time that is given us.",
+        author: "J. R. R. TOLKIEN"
+      },{
+        quote: "The fool doth think he is wise, but the wise man knows himself to be a fool.",
+        author: "WILLIAM SHAKESPEARE"
+      },{
+        quote: "The world is not to be put in order. The world is order. It is for us to put ourselves in unison with this order.",
+        author: "HENRY MILLER"
+      }
+      ]
+
+//this is for testing in the console
+        window.onload = init;
+        function init(){
+          // console.log("JS Loaded")
+          generateQuote()
+          }
+
+//this function get new data, then set it to the button for use
+        function generateQuote(){
+        // console.log("Generate Quote");
+        let quoteSize = quotes.length;
+        let randomIndex = Math.floor(Math.random() * quoteSize);//Math.floor?
+        let randomQuoteData = quotes[randomIndex];
+
+<!--make the quote can be tweeted, use api things change the url-->
+        let tweeterURL ="https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text="
+
+        let quoteInApiFormat = randomQuoteData.quote.replace(/ /g, "%20");
+        tweeterURL += quoteInApiFormat
+
+        let authorInApiFormat = randomQuoteData.author.replace(/ /g, "%20");
+        tweeterURL += " - " + authorInApiFormat
+
+        document.getElementById('tweet-quote').href = tweeterURL;
+        document.getElementById("text").innerText = randomQuoteData.quote;
+        document.getElementById("author").innerText =" - " +  randomQuoteData.author;//innerText?
+        }
+    </script>
+
+<!-- //make it easier to watch BEFORE ADD BOOTSTRAP-->
+    <!-- <style>
+        *{
+          font-size: 1.5rem;
+          margin: 20px;
+          text-align: center;
+        }
+    </style> -->
+    <!-- clean the link original style -->
+    <!-- <style>
+      a{text-decoration: none}
+    </style> -->
+
+  </head>
+  <body>
+    <div class="container">
+      <div class="row py-5">
+        <!-- offset col mb...bootstrap things? -->
+        <div class="mx-auto">
+          <wrapper id="quote-box">
+              <div class="card" style="max-width: 25rem;">
+                <div class="card-header text-center">
+                  Inspirational Quotes
+                </div>
+                <div class="card-body">
+                  <!-- <div id="text"></div> -->
+                  <!-- <div id="author"></div> -->
+                  <h5 class="card-title">
+                    <div id="text"></div>
+                  </h5>
+                  <p class="card-text">
+                    <div id="author" ></div>
+                  </p>
+                    <!-- //this button connecting to the quotes generate function -->
+                  <div class="d-grid gap-2">
+                    <button  id="new-quote" onClick="generateQuote()" class="btn btn-outline-secondary">New Quete</button>
+                    <a href= "#" id="tweet-quote" target="_blank" class="btn btn-outline-info" >Tweet Quote</a>
+                 </div>
+
+                  </div>
+                </div>
+              </div>
+          </wrapper>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+  </body>
+</html>
